@@ -43,28 +43,33 @@ void InputManager::capture()
 
 void InputManager::injectEvent(Event *event)
 {
-    Deque<EventListener *>::iterator it = m_listerners.begin();
-    Deque<EventListener *>::const_iterator end = m_listerners.end();
+    Deque<EventListener *>::iterator it = m_listeners.begin();
+    Deque<EventListener *>::const_iterator end = m_listeners.end();
 
     for (; it != end; ++it)
     {
-        // EventListener *listerner = *it;
+        EventListener *listener = *it;
 
         switch (event->type())
         {
             case Event::KEY_DOWN:
+                listener->keyPressEvent(static_cast<KeyEvent *>(event));
                 break;
 
             case Event::KEY_UP:
+                listener->keyReleaseEvent(static_cast<KeyEvent *>(event));
                 break;
 
             case Event::MOUSE_BUTTON_DOWN:
+                listener->mousePressEvent(static_cast<MouseEvent *>(event));
                 break;
 
             case Event::MOUSE_BUTTON_UP:
+                listener->mouseReleaseEvent(static_cast<MouseEvent *>(event));
                 break;
 
             case Event::MOUSE_MOTION:
+                listener->mouseMoveEvent(static_cast<MouseEvent *>(event));
                 break;
 
             default:
@@ -73,15 +78,15 @@ void InputManager::injectEvent(Event *event)
     }
 }
 
-void InputManager::addListener(EventListener* listerner)
+void InputManager::addListener(EventListener* listener)
 {
-    if (listerner)
+    if (listener)
     {
-        Deque<EventListener *>::const_iterator it = std::find(m_listerners.begin(), m_listerners.end(), listerner);
+        Deque<EventListener *>::const_iterator it = std::find(m_listeners.begin(), m_listeners.end(), listener);
 
-        if (it == m_listerners.end())
+        if (it == m_listeners.end())
         {
-            m_listerners.push_back(listerner);
+            m_listeners.push_back(listener);
         }
 
         else {
@@ -90,15 +95,15 @@ void InputManager::addListener(EventListener* listerner)
     }
 }
 
-void InputManager::removeListener(EventListener* listerner)
+void InputManager::removeListener(EventListener* listener)
 {
-    if (listerner)
+    if (listener)
     {
-        Deque<EventListener *>::iterator it = std::find(m_listerners.begin(), m_listerners.end(), listerner);
+        Deque<EventListener *>::iterator it = std::find(m_listeners.begin(), m_listeners.end(), listener);
 
-        if (it != m_listerners.end())
+        if (it != m_listeners.end())
         {
-            m_listerners.erase(it);
+            m_listeners.erase(it);
         }
 
         else {

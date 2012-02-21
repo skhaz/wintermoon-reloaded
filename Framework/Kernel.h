@@ -19,7 +19,7 @@
 #ifndef _Kernel_h
 #define _Kernel_h
 
-#include "Internal.h"
+#include "Framework/Internal.h"
 
 
 

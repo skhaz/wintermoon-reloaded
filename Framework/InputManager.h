@@ -46,7 +46,7 @@ class InputManager
 
         ~InputManager();
 
-        Deque<EventListener *> m_listerners;
+        Deque<EventListener *> m_listeners;
 };
 
 WINTERMOON_END_NAMESPACE
