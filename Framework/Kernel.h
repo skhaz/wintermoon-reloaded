@@ -1,4 +1,3 @@
-
 /*
  *                        __
  *             __        /\ \__
@@ -17,36 +16,31 @@
  *
  */
 
-#ifndef _InputManager_h
-#define _InputManager_h
+#ifndef _Kernel_h
+#define _Kernel_h
 
-#include "Framework/Internal.h"
+#include "Internal.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class Event;
-class EventListener;
-class InputManager
+class VideoManager;
+class InputManager;
+
+class Kernel
 {
     public:
-        void capture();
+        static Kernel* instance();
 
-        void injectEvent(Event *event);
-
-        void addListener(EventListener *listener);
-
-        void removeListener(EventListener *listener);
+        InputManager* inputManager() const;
 
     private:
-        friend class Kernel;
+        Kernel();
 
-        InputManager();
+        ~Kernel();
 
-        ~InputManager();
-
-        Deque<EventListener *> m_listerners;
+        InputManager *m_input;
 };
 
 WINTERMOON_END_NAMESPACE

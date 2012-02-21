@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef _InputManager_h
-#define _InputManager_h
+#ifndef _Key_h
+#define _Key_h
 
 #include "Framework/Internal.h"
 
@@ -26,27 +26,37 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class Event;
-class EventListener;
-class InputManager
+class Key
 {
     public:
-        void capture();
+        Key();
 
-        void injectEvent(Event *event);
+        explicit Key(int key);
 
-        void addListener(EventListener *listener);
+        Key(const String& key);
 
-        void removeListener(EventListener *listener);
+        Key(const Key& other);
+
+        String name() const;
+
+        bool empty() const;
+
+        operator int() const;
+
+        const Key& operator=(const Key& other);
+
+        bool operator==(const Key& other);
+
+        bool operator==(int key);
+
+        bool operator!=(const Key& other);
+
+        bool operator!=(int key);
 
     private:
-        friend class Kernel;
+        static Map<String, int> m_keymap;
 
-        InputManager();
-
-        ~InputManager();
-
-        Deque<EventListener *> m_listerners;
+        int m_key;
 };
 
 WINTERMOON_END_NAMESPACE

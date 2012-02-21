@@ -28,7 +28,7 @@
     #include <map>
 
     WINTERMOON_BEGIN_NAMESPACE
-        using std::map;
+        #define Map std::map
     WINTERMOON_END_NAMESPACE
 #else
     // TODO

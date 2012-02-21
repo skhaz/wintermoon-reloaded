@@ -17,39 +17,33 @@
  *
  */
 
-#ifndef _InputManager_h
-#define _InputManager_h
-
-#include "Framework/Internal.h"
+#include "Point.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class Event;
-class EventListener;
-class InputManager
+Point::Point()
+: m_x(0)
+, m_y(0)
 {
-    public:
-        void capture();
+}
 
-        void injectEvent(Event *event);
+Point::Point(int x, int y)
+: m_x(x)
+, m_y(y)
+{
+}
 
-        void addListener(EventListener *listener);
+int Point::x() const
+{
+    return m_y;
+}
 
-        void removeListener(EventListener *listener);
-
-    private:
-        friend class Kernel;
-
-        InputManager();
-
-        ~InputManager();
-
-        Deque<EventListener *> m_listerners;
-};
+int Point::y() const
+{
+    return m_x;
+}
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 

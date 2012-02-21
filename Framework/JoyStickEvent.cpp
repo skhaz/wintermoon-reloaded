@@ -1,4 +1,4 @@
-
+﻿
 /*
  *                        __
  *             __        /\ \__
@@ -17,39 +17,24 @@
  *
  */
 
-#ifndef _InputManager_h
-#define _InputManager_h
-
-#include "Framework/Internal.h"
+#include "JoyStickEvent.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class Event;
-class EventListener;
-class InputManager
+JoyStickEvent::JoyStickEvent()
 {
-    public:
-        void capture();
+}
 
-        void injectEvent(Event *event);
+JoyStickEvent::~JoyStickEvent()
+{
+}
 
-        void addListener(EventListener *listener);
-
-        void removeListener(EventListener *listener);
-
-    private:
-        friend class Kernel;
-
-        InputManager();
-
-        ~InputManager();
-
-        Deque<EventListener *> m_listerners;
-};
+Event::Type JoyStickEvent::type() const
+{
+    return Event::JOYSTICK;
+}
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 

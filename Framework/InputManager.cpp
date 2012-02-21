@@ -48,7 +48,7 @@ void InputManager::injectEvent(Event *event)
 
     for (; it != end; ++it)
     {
-        EventListener *listerner = *it;
+        // EventListener *listerner = *it;
 
         switch (event->type())
         {
@@ -98,7 +98,7 @@ void InputManager::removeListener(EventListener* listerner)
 
         if (it != m_listerners.end())
         {
-            m_listerners.erase(it)
+            m_listerners.erase(it);
         }
 
         else {

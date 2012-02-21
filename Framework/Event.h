@@ -26,7 +26,7 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class DLL_EXPORT Event
+class Event
 {
     public:
         enum Type {
@@ -34,7 +34,8 @@ class DLL_EXPORT Event
             KEY_UP,
             MOUSE_BUTTON_DOWN,
             MOUSE_BUTTON_UP,
-            MOUSE_MOTION
+            MOUSE_MOTION,
+            JOYSTICK
         };
 
         virtual ~Event();

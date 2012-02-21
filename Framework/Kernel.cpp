@@ -17,39 +17,35 @@
  *
  */
 
-#ifndef _InputManager_h
-#define _InputManager_h
+#include "Framework/Kernel.h"
 
-#include "Framework/Internal.h"
+#include "Framework/VideoManager.h"
+#include "Framework/InputManager.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class Event;
-class EventListener;
-class InputManager
+Kernel* Kernel::instance()
 {
-    public:
-        void capture();
+    static Kernel root;
+    return &root;
+}
 
-        void injectEvent(Event *event);
+InputManager* Kernel::inputManager() const
+{
+    return m_input;
+}
 
-        void addListener(EventListener *listener);
+Kernel::Kernel()
+: m_input(new InputManager())
+{
+}
 
-        void removeListener(EventListener *listener);
-
-    private:
-        friend class Kernel;
-
-        InputManager();
-
-        ~InputManager();
-
-        Deque<EventListener *> m_listerners;
-};
+Kernel::~Kernel()
+{
+    delete m_input;
+}
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 
