@@ -37,22 +37,22 @@ Size::Size(int width, int height)
 
 void Size::setWidth(int width)
 {
-	m_width = width;
+    m_width = width;
 }
 
 void Size::setHeight(int height)
 {
-	m_height = height;
+    m_height = height;
 }
 
 int Size::width() const
 {
-	return m_width;
+    return m_width;
 }
 
 int Size::height() const
 {
-	return m_height;
+    return m_height;
 }
 
 WINTERMOON_END_NAMESPACE

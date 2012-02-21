@@ -28,23 +28,23 @@ WINTERMOON_BEGIN_NAMESPACE
 
 class Size
 {
-	public:
-		Size();
+    public:
+        Size();
 
-		Size(int width, int height);
+        Size(int width, int height);
 
-		void setWidth(int width);
+        void setWidth(int width);
 
-		void setHeight(int height);
+        void setHeight(int height);
 
-		int width() const;
+        int width() const;
 
-		int height() const;
+        int height() const;
 
-	private:
-		int m_width;
+    private:
+        int m_width;
 
-		int m_height;
+        int m_height;
 };
 
 WINTERMOON_END_NAMESPACE

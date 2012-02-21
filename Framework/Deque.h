@@ -23,14 +23,14 @@
 
 
 #ifdef USE_STL
-	#include "ContainerHelper.h"
-	#include <deque>
+    #include "ContainerHelper.h"
+    #include <deque>
 
-	WINTERMOON_BEGIN_NAMESPACE
-		DECLARE_CONTAINER_HELPER(Deque, std::deque)
-	WINTERMOON_END_NAMESPACE
+    WINTERMOON_BEGIN_NAMESPACE
+        DECLARE_CONTAINER_HELPER(Deque, std::deque)
+    WINTERMOON_END_NAMESPACE
 #else
-	// TODO
+    // TODO
 #endif
 
 #endif

@@ -32,22 +32,22 @@ WINTERMOON_BEGIN_NAMESPACE
 template <typename T> \
 class N : public C<T> \
 { \
-	public: \
-		void operator+=(const T& element) \
-		{ \
-			push_back(element); \
-		} \
-		\
-		void operator-=(const T& element) \
-		{ \
-			typename C<T>::iterator it = std::find(this->begin(), this->end(), element); \
-			\
-			if (it != this->end()) \
-			{ \
-				this->erase(it); \
-			} \
-		} \
-		\
+    public: \
+        void operator+=(const T& element) \
+        { \
+            push_back(element); \
+        } \
+        \
+        void operator-=(const T& element) \
+        { \
+            typename C<T>::iterator it = std::find(this->begin(), this->end(), element); \
+            \
+            if (it != this->end()) \
+            { \
+                this->erase(it); \
+            } \
+        } \
+        \
 };
 
 WINTERMOON_END_NAMESPACE

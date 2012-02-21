@@ -32,31 +32,31 @@ WINTERMOON_BEGIN_NAMESPACE
 
 typedef enum Backend
 {
-	None = 0,
-	SDL,
-	Qt,
-	iOS,
-	Android
+    None = 0,
+    SDL,
+    Qt,
+    iOS,
+    Android
 };
 
 #ifdef MATH_PRECISE
-	typedef double Real;
+    typedef double Real;
 #else
-	typedef float Real;
+    typedef float Real;
 #endif
 
 #ifdef USE_STL
-	#include <string>
+    #include <string>
 
-	#ifdef USE_BOOST_ALLOCATOR
-		#include <boost/pool/pool_alloc.hpp>
+    #ifdef USE_BOOST_ALLOCATOR
+        #include <boost/pool/pool_alloc.hpp>
 
-		typedef std::basic_string<char, std::char_traits<char>, boost::fast_pool_allocator<char> > String;
-	#else
-		typedef std::string String;
-	#endif
+        typedef std::basic_string<char, std::char_traits<char>, boost::fast_pool_allocator<char> > String;
+    #else
+        typedef std::string String;
+    #endif
 #else
-	// String?
+    // String?
 #endif
 
 typedef List<String> StringList;

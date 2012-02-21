@@ -25,13 +25,13 @@
 
 
 #ifdef USE_STL
-	#include <map>
+    #include <map>
 
-	WINTERMOON_BEGIN_NAMESPACE
-		using std::map;
-	WINTERMOON_END_NAMESPACE
+    WINTERMOON_BEGIN_NAMESPACE
+        using std::map;
+    WINTERMOON_END_NAMESPACE
 #else
-	// TODO
+    // TODO
 #endif
 
 #endif

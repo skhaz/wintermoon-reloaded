@@ -28,12 +28,12 @@ WINTERMOON_BEGIN_NAMESPACE
 
 class Application
 {
-	public:
-		Application(int argc, char **argv);
+    public:
+        Application(int argc, char **argv);
 
-		virtual ~Application();
+        virtual ~Application();
 
-		virtual int exec();
+        virtual int exec();
 };
 
 WINTERMOON_END_NAMESPACE
