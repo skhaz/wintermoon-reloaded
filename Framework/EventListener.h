@@ -17,42 +17,41 @@
  *
  */
 
-#include "Platforms/PC/PCApplicationPrivate.h"
+#ifndef _EventListener_h
+#define _EventListener_h
+
+#include "Framework/Internal.h"
+
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCApplicationPrivate::PCApplicationPrivate(int argc, char **argv)
+class JoyStickEvent;
+class KeyEvent;
+class MouseEvent;
+
+class EventListener
 {
-    UNUSED(argc);
-    UNUSED(argv);
+    public:
+        EventListener();
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        LOG("SDL_Init %s", SDL_GetError());
-        exit(-1);
-    }
+        virtual ~EventListener();
 
-    else {
-        SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-    }
+        virtual void keyPressEvent(KeyEvent* event);
 
-    if (FAILED(PHYSFS_init(argv[0]))) {
-        LOG("PHYSFS_init %s", PHYSFS_getLastError());
-        exit(-1);
-    }
-}
+        virtual void keyReleaseEvent(KeyEvent* event);
 
-PCApplicationPrivate::~PCApplicationPrivate()
-{
-    PHYSFS_deinit();
-    SDL_Quit();
-}
+        virtual void mouseMoveEvent(MouseEvent* event);
 
-int PCApplicationPrivate::exec()
-{
-    return 0;
-}
+        virtual void mouseReleaseEvent(MouseEvent* event);
+
+        virtual void mousePressEvent(MouseEvent* event);
+
+        virtual void quitEvent();
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 

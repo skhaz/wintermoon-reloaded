@@ -17,42 +17,39 @@
  *
  */
 
-#include "Platforms/PC/PCApplicationPrivate.h"
+#ifndef _InputManager_h
+#define _InputManager_h
+
+#include "Framework/Internal.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCApplicationPrivate::PCApplicationPrivate(int argc, char **argv)
+class Event;
+class EventListener;
+class DLL_EXPORT InputManager
 {
-    UNUSED(argc);
-    UNUSED(argv);
+    public:
+        void capture();
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        LOG("SDL_Init %s", SDL_GetError());
-        exit(-1);
-    }
+        void injectEvent(Event *event);
 
-    else {
-        SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-    }
+        void addListener(EventListener *listener);
 
-    if (FAILED(PHYSFS_init(argv[0]))) {
-        LOG("PHYSFS_init %s", PHYSFS_getLastError());
-        exit(-1);
-    }
-}
+        void removeListener(EventListener *listener);
 
-PCApplicationPrivate::~PCApplicationPrivate()
-{
-    PHYSFS_deinit();
-    SDL_Quit();
-}
+    private:
+        friend class Kernel;
 
-int PCApplicationPrivate::exec()
-{
-    return 0;
-}
+        InputManager();
+
+        ~InputManager();
+
+        Deque<EventListener *> m_listerners;
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 

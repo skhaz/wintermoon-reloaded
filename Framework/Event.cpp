@@ -1,4 +1,4 @@
-
+﻿
 /*
  *                        __
  *             __        /\ \__
@@ -17,41 +17,14 @@
  *
  */
 
-#include "Platforms/PC/PCApplicationPrivate.h"
+#include "Framework/Event.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCApplicationPrivate::PCApplicationPrivate(int argc, char **argv)
+Event::~Event()
 {
-    UNUSED(argc);
-    UNUSED(argv);
-
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        LOG("SDL_Init %s", SDL_GetError());
-        exit(-1);
-    }
-
-    else {
-        SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-    }
-
-    if (FAILED(PHYSFS_init(argv[0]))) {
-        LOG("PHYSFS_init %s", PHYSFS_getLastError());
-        exit(-1);
-    }
-}
-
-PCApplicationPrivate::~PCApplicationPrivate()
-{
-    PHYSFS_deinit();
-    SDL_Quit();
-}
-
-int PCApplicationPrivate::exec()
-{
-    return 0;
 }
 
 WINTERMOON_END_NAMESPACE

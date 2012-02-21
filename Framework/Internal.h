@@ -26,7 +26,12 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
 #include <algorithm>
+
 #include <cstdio>
+
+
+
+WINTERMOON_BEGIN_NAMESPACE
 
 #if defined WIN32 || WINDOWS && BUILD_DLL
 # define DLL_EXPORT __declspec(dllexport)
@@ -43,7 +48,10 @@
 #define LOG(log, ...) do { printf(log, __VA_ARGS__); } while(0)
 #define i18n(string) StringTable::getString(string)
 
-WINTERMOON_BEGIN_NAMESPACE
+#define DISALLOW_COPY_AND_ASSIGN(TypeName) \
+    TypeName(const TypeName&);             \
+    void operator=(const TypeName&)
+
 WINTERMOON_END_NAMESPACE
 
 #endif

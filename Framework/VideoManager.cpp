@@ -39,13 +39,13 @@ VideoManager::VideoManager(Backend backend)
 }
 
 VideoManager::VideoManager(const VideoManager& other)
+: m_backend(other.m_backend)
+, m_size(other.m_size)
+, m_bpp(other.m_bpp)
+, m_title(other.m_title)
+, m_fullscreen(other.m_fullscreen)
+, m_graphics(other.m_graphics)
 {
-    m_backend = other.m_backend;
-    m_size = other.m_size;
-    m_bpp = other.m_bpp;
-    m_title = other.m_title;
-    m_fullscreen = other.m_fullscreen;
-    m_graphics = other.m_graphics;
 }
 
 VideoManager::~VideoManager()
@@ -80,11 +80,18 @@ VideoManager& VideoManager::init()
 {
     switch (m_backend)
     {
+        #ifdef USE_SDL
         case SDL:
             m_graphics.reset(new PCGraphics());
             break;
+        #endif
 
+        #ifdef USE_QT
         case Qt:
+            m_graphics.reset(new QtGraphics());
+            break;
+        #endif
+
         case iOS:
         case Android:
         case None:
@@ -94,7 +101,10 @@ VideoManager& VideoManager::init()
 
     bool suscess = m_graphics->init(m_size, m_bpp, m_title, m_fullscreen);
 
-    UNUSED(suscess);
+    if (!suscess) {
+        LOG("Failed to set video mode at %dx%dx%d", m_size.width(), m_size.height(), m_bpp);
+        // Application::exit();
+    }
 
     return *this;
 }

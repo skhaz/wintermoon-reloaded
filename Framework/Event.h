@@ -17,42 +17,32 @@
  *
  */
 
-#include "Platforms/PC/PCApplicationPrivate.h"
+#ifndef _Event_h
+#define _Event_h
+
+#include "Framework/Internal.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCApplicationPrivate::PCApplicationPrivate(int argc, char **argv)
+class DLL_EXPORT Event
 {
-    UNUSED(argc);
-    UNUSED(argv);
+    public:
+        enum Type {
+            KEY_DOWN,
+            KEY_UP,
+            MOUSE_BUTTON_DOWN,
+            MOUSE_BUTTON_UP,
+            MOUSE_MOTION
+        };
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        LOG("SDL_Init %s", SDL_GetError());
-        exit(-1);
-    }
+        virtual ~Event();
 
-    else {
-        SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-    }
-
-    if (FAILED(PHYSFS_init(argv[0]))) {
-        LOG("PHYSFS_init %s", PHYSFS_getLastError());
-        exit(-1);
-    }
-}
-
-PCApplicationPrivate::~PCApplicationPrivate()
-{
-    PHYSFS_deinit();
-    SDL_Quit();
-}
-
-int PCApplicationPrivate::exec()
-{
-    return 0;
-}
+        virtual Type type() const = 0;
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 
