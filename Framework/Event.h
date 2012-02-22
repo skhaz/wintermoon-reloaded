@@ -36,7 +36,9 @@ class Event
             MOUSE_BUTTON_DOWN,
             MOUSE_BUTTON_UP,
             MOUSE_MOTION,
-            JOYSTICK
+            JOYSTICK,
+            LAST_EVENT,
+            USER_EVENT = LAST_EVENT + 1
         };
 
         virtual ~Event();

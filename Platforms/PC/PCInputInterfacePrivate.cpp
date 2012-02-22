@@ -70,7 +70,7 @@ void PCInputInterfacePrivate::update()
 
             case SDL_MOUSEBUTTONUP:
             {
-                MouseEvent mouse(Mouse::NoButton, event.button.x, event.button.y, Event::MOUSE_BUTTON_UP;
+                MouseEvent mouse(Mouse::NoButton, event.button.x, event.button.y, Event::MOUSE_BUTTON_UP);
                 m_target->injectEvent(&mouse);
             } break;
 
@@ -97,11 +97,10 @@ Mouse::Button PCInputInterfacePrivate::convertMouseButton(Uint8 button)
         case SDL_BUTTON_RIGHT:
             return Mouse::RightButton;
             break;
-	}
+    }
 
-	return Mouse::NoButton;
+    return Mouse::NoButton;
 }
-
 
 WINTERMOON_END_NAMESPACE
 
