@@ -23,16 +23,20 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
-MouseEvent::MouseEvent(int button, int x, int y)
-: m_button(button)
-, m_x(x)
-, m_y(y)
+MouseEvent::MouseEvent()
+: m_type(Event::NONE)
+, m_button(Mouse::NoButton)
+, m_x(0)
+, m_y(0)
 {
 }
 
-int MouseEvent::button() const
+MouseEvent::MouseEvent(Mouse::Button button, int x, int y, Event::Type type)
+: m_type(type)
+, m_button(button)
+, m_x(x)
+, m_y(y)
 {
-    return m_button;
 }
 
 int MouseEvent::x() const
@@ -40,19 +44,44 @@ int MouseEvent::x() const
     return m_x;
 }
 
+void MouseEvent::setX(int x)
+{
+    m_x = x;
+}
+
 int MouseEvent::y() const
 {
     return m_y;
 }
 
-Point MouseEvent::pos() const
+void MouseEvent::setY(int y)
 {
-    return Point(m_x, m_y);
+    m_y = y;
+}
+
+Mouse::Button MouseEvent::button() const
+{
+    return m_button;
+}
+
+void MouseEvent::setButton(Mouse::Button button)
+{
+    m_button = button;
 }
 
 Event::Type MouseEvent::type() const
 {
-    return Event::MOUSE_BUTTON_DOWN;
+    return m_type;
+}
+
+void MouseEvent::setType(Event::Type type)
+{
+    m_type = type;
+}
+
+Point MouseEvent::pos() const
+{
+    return Point(m_x, m_y);
 }
 
 WINTERMOON_END_NAMESPACE

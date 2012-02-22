@@ -20,8 +20,11 @@
 #ifndef _PCInputInterfacePrivate_h
 #define _PCInputInterfacePrivate_h
 
-#include "Framework/Internal.h"
 #include "Platforms/PC/PCPrivate.h"
+
+#include "Framework/JoyStickEvent.h"
+#include "Framework/KeyEvent.h"
+#include "Framework/MouseEvent.h"
 #include "Framework/InputManager.h"
 
 
@@ -38,6 +41,9 @@ class PCInputInterfacePrivate
         void setTarget(InputManager *manager);
 
         void update();
+
+    protected:
+        Mouse::Button convertMouseButton(Uint8 button);
 
     private:
         InputManager *m_target;

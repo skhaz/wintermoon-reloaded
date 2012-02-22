@@ -19,10 +19,6 @@
 
 #include "Platforms/PC/PCInputInterfacePrivate.h"
 
-#include "Framework/JoyStickEvent.h"
-#include "Framework/KeyEvent.h"
-#include "Framework/MouseEvent.h"
-
 
 
 WINTERMOON_BEGIN_NAMESPACE
@@ -62,14 +58,20 @@ void PCInputInterfacePrivate::update()
 
             case SDL_MOUSEMOTION:
             {
+                MouseEvent mouse(Mouse::NoButton, event.button.x, event.button.y, Event::MOUSE_MOTION);
+                m_target->injectEvent(&mouse);
             } break;
 
             case SDL_MOUSEBUTTONDOWN:
             {
+                MouseEvent mouse(Mouse::NoButton, event.button.x, event.button.y, Event::MOUSE_BUTTON_DOWN);
+                m_target->injectEvent(&mouse);
             } break;
 
             case SDL_MOUSEBUTTONUP:
             {
+                MouseEvent mouse(Mouse::NoButton, event.button.x, event.button.y, Event::MOUSE_BUTTON_UP;
+                m_target->injectEvent(&mouse);
             } break;
 
             case SDL_QUIT:
@@ -81,6 +83,25 @@ void PCInputInterfacePrivate::update()
         }
     }
 }
+
+Mouse::Button PCInputInterfacePrivate::convertMouseButton(Uint8 button)
+{
+    switch (button)
+    {
+        case SDL_BUTTON_LEFT:
+            return Mouse::LeftButton;
+            break;
+        case SDL_BUTTON_MIDDLE:
+            return Mouse::MiddleButton;
+            break;
+        case SDL_BUTTON_RIGHT:
+            return Mouse::RightButton;
+            break;
+	}
+
+	return Mouse::NoButton;
+}
+
 
 WINTERMOON_END_NAMESPACE
 

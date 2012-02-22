@@ -16,57 +16,36 @@
  *
  */
 
-#include "Framework/KeyEvent.h"
+#ifndef _Mouse_h
+#define _Mouse_h
+
+#include "Framework/Internal.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-KeyEvent::KeyEvent()
-: m_type(Event::NONE)
+class DLL_EXPORT Mouse
 {
-}
+    public:
+        enum Button
+        {
+            NoButton     = 0x00000000,
+            RightButton  = 0x00000001,
+            LeftButton   = 0x00000002,
+            MiddleButton = 0x00000004
+        };
 
-KeyEvent::KeyEvent(int key, int modifier, Event::Type type)
-: m_type(type)
-, m_key(key)
-, m_modifier(modifier)
-{
-}
+        Mouse();
 
-KeyEvent::~KeyEvent()
-{
-}
+        virtual ~Mouse();
 
-Key KeyEvent::key() const
-{
-    return m_key;
-}
+        static void warp(int x, int y);
 
-void KeyEvent::setKey(Key key)
-{
-    m_key = key;
-}
-
-KeyModifier KeyEvent::modifier() const
-{
-    return m_modifier;
-}
-
-void KeyEvent::setModifier(KeyModifier modifier)
-{
-    m_modifier = modifier;
-}
-
-Event::Type KeyEvent::type() const
-{
-    return m_type;
-}
-
-void KeyEvent::setType(Event::Type type)
-{
-    m_type = type;
-}
+        static void show(bool toggle);
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 

@@ -15,57 +15,33 @@
  * % END_LICENSE %
  *
  */
-
-#include "Framework/KeyEvent.h"
+#include "Framework/Mouse.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-KeyEvent::KeyEvent()
-: m_type(Event::NONE)
+Mouse::Mouse()
 {
 }
 
-KeyEvent::KeyEvent(int key, int modifier, Event::Type type)
-: m_type(type)
-, m_key(key)
-, m_modifier(modifier)
+Mouse::~Mouse()
 {
 }
 
-KeyEvent::~KeyEvent()
+void Mouse::warp(int x, int y)
 {
+    UNUSED(x);
+    UNUSED(y);
+
+    // TODO
 }
 
-Key KeyEvent::key() const
+void Mouse::show(bool toggle)
 {
-    return m_key;
-}
+    UNUSED(toggle);
 
-void KeyEvent::setKey(Key key)
-{
-    m_key = key;
-}
-
-KeyModifier KeyEvent::modifier() const
-{
-    return m_modifier;
-}
-
-void KeyEvent::setModifier(KeyModifier modifier)
-{
-    m_modifier = modifier;
-}
-
-Event::Type KeyEvent::type() const
-{
-    return m_type;
-}
-
-void KeyEvent::setType(Event::Type type)
-{
-    m_type = type;
+    // TODO
 }
 
 WINTERMOON_END_NAMESPACE

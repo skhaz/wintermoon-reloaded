@@ -40,16 +40,20 @@ class KeyEvent : public Event
 
         Key key() const;
 
+        void setKey(Key key);
+
         KeyModifier modifier() const;
+
+        void setModifier(KeyModifier modifier);
 
         Event::Type type() const;
 
+        void setType(Event::Type type);
+
     private:
-        Key m_key;
-
-        KeyModifier m_modifier;
-
         Event::Type m_type;
+        Key m_key;
+        KeyModifier m_modifier;
 };
 
 WINTERMOON_END_NAMESPACE

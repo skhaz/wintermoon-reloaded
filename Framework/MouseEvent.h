@@ -22,7 +22,7 @@
 
 #include "Framework/Internal.h"
 
-// #include "Framework/Mouse.h"
+#include "Framework/Mouse.h"
 #include "Framework/Point.h"
 #include "Framework/Event.h"
 
@@ -33,20 +33,31 @@ WINTERMOON_BEGIN_NAMESPACE
 class MouseEvent : public Event
 {
     public:
-        MouseEvent(int button, int x, int y);
+        MouseEvent();
+
+        MouseEvent(Mouse::Button button, int x, int y, Event::Type type);
 
         int x() const;
 
+        void setX(int x);
+
         int y() const;
 
-        int button() const;
+        void setY(int y);
 
-        Point pos() const;
+        Mouse::Button button() const;
+
+        void setButton(Mouse::Button button);
 
         Event::Type type() const;
 
+        void setType(Event::Type type);
+
+        Point pos() const;
+
     private:
-        int m_button;
+        Event::Type m_type;
+        Mouse::Button m_button;
         int m_x;
         int m_y;
 };
