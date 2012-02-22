@@ -1,4 +1,3 @@
-
 /*
  *                        __
  *             __        /\ \__
@@ -54,8 +53,6 @@ bool PCGraphicsPrivate::init(const Size& size, short bpp, const String& title, b
     SDL_GL_SetAttribute(SDL_GL_ACCUM_GREEN_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_BLUE_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_ALPHA_SIZE, 0);
-
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
     glViewport(0, 0, size.width(), size.height());
