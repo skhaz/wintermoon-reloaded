@@ -30,6 +30,7 @@ class Event
 {
     public:
         enum Type {
+            NONE,
             KEY_DOWN,
             KEY_UP,
             MOUSE_BUTTON_DOWN,

@@ -32,7 +32,7 @@ class PCGraphicsPrivate
     public:
         PCGraphicsPrivate();
 
-        virtual ~PCGraphicsPrivate();
+        ~PCGraphicsPrivate();
 
         virtual bool init(const Size& size, short bpp, const String& title, bool fullscreen);
 };

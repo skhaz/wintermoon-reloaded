@@ -31,8 +31,6 @@
 
 
 
-WINTERMOON_BEGIN_NAMESPACE
-
 #if defined WIN32 || WINDOWS && BUILD_DLL
 # define DLL_EXPORT __declspec(dllexport)
 #else
@@ -50,9 +48,7 @@ WINTERMOON_BEGIN_NAMESPACE
 
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \
     TypeName(const TypeName&);             \
-    void operator=(const TypeName&)
-
-WINTERMOON_END_NAMESPACE
+    void operator=(const TypeName&);
 
 #endif
 

@@ -78,7 +78,7 @@ void InputManager::injectEvent(Event *event)
     }
 }
 
-void InputManager::addListener(EventListener* listener)
+void InputManager::addListener(EventListener *listener)
 {
     if (listener)
     {
@@ -95,7 +95,7 @@ void InputManager::addListener(EventListener* listener)
     }
 }
 
-void InputManager::removeListener(EventListener* listener)
+void InputManager::removeListener(EventListener *listener)
 {
     if (listener)
     {

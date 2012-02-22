@@ -40,6 +40,8 @@ class InputManager
         void removeListener(EventListener *listener);
 
     private:
+        DISALLOW_COPY_AND_ASSIGN(InputManager)
+
         friend class Kernel;
 
         InputManager();

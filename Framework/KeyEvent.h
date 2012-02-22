@@ -34,7 +34,7 @@ class KeyEvent : public Event
     public:
         KeyEvent();
 
-        KeyEvent(int key, int modifier);
+        KeyEvent(int key, int modifier, Event::Type type);
 
         virtual ~KeyEvent();
 
@@ -48,6 +48,8 @@ class KeyEvent : public Event
         Key m_key;
 
         KeyModifier m_modifier;
+
+        Event::Type m_type;
 };
 
 WINTERMOON_END_NAMESPACE

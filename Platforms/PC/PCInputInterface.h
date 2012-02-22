@@ -1,3 +1,4 @@
+
 /*
  *                        __
  *             __        /\ \__
@@ -16,44 +17,35 @@
  *
  */
 
-#include "Framework/KeyEvent.h"
+#ifndef _PCInputInterface_h
+#define _PCInputInterface_h
+
+#include "Framework/Internal.h"
+
+#include "Interfaces/InputInterface.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-KeyEvent::KeyEvent()
-: m_key(0)
-, m_modifier(0)
-, m_type(Event::NONE)
+class InputManager;
+class PCInputInterfacePrivate;
+class PCInputInterface : public InputInterface
 {
-}
+    public:
+        PCInputInterface();
 
-KeyEvent::KeyEvent(int key, int modifier, Event::Type type)
-: m_key(key)
-, m_modifier(modifier)
-, m_type(type)
-{
-}
+        virtual ~PCInputInterface();
 
-KeyEvent::~KeyEvent()
-{
-}
+        virtual void setTarget(InputManager *manager);
 
-Key KeyEvent::key() const
-{
-    return m_key;
-}
+        virtual void update();
 
-KeyModifier KeyEvent::modifier() const
-{
-    return m_modifier;
-}
-
-Event::Type KeyEvent::type() const
-{
-    return m_type;
-}
+    private:
+        PCInputInterfacePrivate *d;
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 
