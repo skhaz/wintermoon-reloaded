@@ -28,10 +28,11 @@ WINTERMOON_BEGIN_NAMESPACE
 
 class Event;
 class EventListener;
+class InputPrivate;
 class InputManager
 {
     public:
-        void capture();
+        void update();
 
         void injectEvent(Event *event);
 
@@ -47,6 +48,8 @@ class InputManager
         InputManager();
 
         ~InputManager();
+
+        InputPrivate *d;
 
         Deque<EventListener *> m_listeners;
 };

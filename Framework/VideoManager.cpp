@@ -39,5 +39,15 @@ bool VideoManager::init(const Size& size, short bpp, const String& title, bool f
     return d->init(size, bpp, title, fullscreen);
 }
 
+void VideoManager::beginDraw()
+{
+    d->beginDraw();
+}
+
+void VideoManager::endDraw()
+{
+    d->endDraw();
+}
+
 WINTERMOON_END_NAMESPACE
 

@@ -43,7 +43,7 @@
 #define FAILED(x) (! (x))
 
 #define UNUSED(x) ((void) (x))
-#define LOG(log, ...) do { printf(log, __VA_ARGS__); } while(0)
+#define LOG(...) do { printf(__VA_ARGS__); } while(0)
 #define i18n(string) StringTable::getString(string)
 
 #define DISALLOW_COPY_AND_ASSIGN(TypeName) \

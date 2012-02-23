@@ -19,6 +19,8 @@
 
 #include "Framework/InputManager.h"
 
+#include "Platforms/PC/InputPrivate.h"
+
 #include "Framework/Event.h"
 #include "Framework/EventListener.h"
 #include "Framework/JoyStickEvent.h"
@@ -31,14 +33,18 @@ WINTERMOON_BEGIN_NAMESPACE
 
 InputManager::InputManager()
 {
+    d = new InputPrivate();
+    d->setTarget(this);
 }
 
 InputManager::~InputManager()
 {
+    delete d;
 }
 
-void InputManager::capture()
+void InputManager::update()
 {
+    d->update();
 }
 
 void InputManager::injectEvent(Event *event)

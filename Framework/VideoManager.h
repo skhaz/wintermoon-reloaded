@@ -36,6 +36,10 @@ class VideoManager
 
         bool init(const Size& size, short bpp, const String& title, bool fullscreen);
 
+        void beginDraw();
+
+        void endDraw();
+
     private:
         VideoPrivate *d;
 };
