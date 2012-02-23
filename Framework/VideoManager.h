@@ -21,12 +21,12 @@
 #define _VideoManager_h
 
 #include "Framework/Internal.h"
+#include "Framework/Video.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class Video;
 class VideoManager
 {
     public:
@@ -70,7 +70,7 @@ class VideoManager
 
         bool m_fullscreen;
 
-        Video *m_video;
+        VideoPtr m_video;
 };
 
 WINTERMOON_END_NAMESPACE

@@ -32,19 +32,26 @@ Kernel* Kernel::instance()
     return &root;
 }
 
+VideoManager* videoManager() const
+{
+    return m_video;
+}
+
 InputManager* Kernel::inputManager() const
 {
     return m_input;
 }
 
 Kernel::Kernel()
-: m_input(new InputManager())
+: m_video(new VideoManager())
+, m_input(new InputManager())
 {
 }
 
 Kernel::~Kernel()
 {
     delete m_input;
+    delete m_video;
 }
 
 WINTERMOON_END_NAMESPACE

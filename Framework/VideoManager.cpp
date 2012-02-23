@@ -19,8 +19,6 @@
 
 #include "Framework/VideoManager.h"
 
-#include "Framework/Video.h"
-
 
 
 WINTERMOON_BEGIN_NAMESPACE
@@ -74,27 +72,7 @@ VideoManager& VideoManager::withFullScreen(bool fullscreen)
 
 VideoManager& VideoManager::init()
 {
-    switch (m_backend)
-    {
-        #ifdef USE_SDL
-        case SDL:
-            m_video = new Video();
-            break;
-        #endif
-
-        #ifdef USE_QT
-        case Qt:
-            m_video = new QtVideo();
-            break;
-        #endif
-
-        case iOS:
-        case Android:
-        case None:
-        default:
-            break;
-    }
-
+    m_video.reset(new Video());
     bool suscess = m_video->init(m_size, m_bpp, m_title, m_fullscreen);
 
     if (!suscess) {

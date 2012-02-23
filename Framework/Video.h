@@ -40,6 +40,8 @@ class Video
         VideoPrivate *d;
 };
 
+typedef boost::shared_ptr<Video> VideoPtr;
+
 WINTERMOON_END_NAMESPACE
 
 #endif

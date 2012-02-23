@@ -33,6 +33,8 @@ class Kernel
     public:
         static Kernel* instance();
 
+        VideoManager* videoManager() const;
+
         InputManager* inputManager() const;
 
     private:
@@ -40,6 +42,7 @@ class Kernel
 
         ~Kernel();
 
+        VideoManager m_video;
         InputManager *m_input;
 };
 
