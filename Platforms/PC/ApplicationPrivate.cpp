@@ -17,31 +17,41 @@
  *
  */
 
-#include "Platforms/PC/PCInputInterface.h"
-#include "Platforms/PC/PCInputInterfacePrivate.h"
+#include "ApplicationPrivate.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCInputInterface::PCInputInterface()
+ApplicationPrivate::ApplicationPrivate(int argc, char **argv)
 {
-    d = new PCInputInterfacePrivate();
+    UNUSED(argc);
+    UNUSED(argv);
+
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        LOG("SDL_Init %s", SDL_GetError());
+        exit(-1);
+    }
+
+    else {
+        SDL_InitSubSystem(SDL_INIT_JOYSTICK);
+    }
+
+    if (FAILED(PHYSFS_init(argv[0]))) {
+        LOG("PHYSFS_init %s", PHYSFS_getLastError());
+        exit(-1);
+    }
 }
 
-PCInputInterface::~PCInputInterface()
+ApplicationPrivate::~ApplicationPrivate()
 {
-    delete d;
+    PHYSFS_deinit();
+    SDL_Quit();
 }
 
-void PCInputInterface::setTarget(InputManager *manager)
+int ApplicationPrivate::exec()
 {
-    d->setTarget(manager);
-}
-
-void PCInputInterface::update()
-{
-    d->update();
+    return 0;
 }
 
 WINTERMOON_END_NAMESPACE

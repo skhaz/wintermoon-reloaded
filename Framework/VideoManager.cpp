@@ -19,13 +19,9 @@
 
 #include "Framework/VideoManager.h"
 
-#ifdef USE_SDL
-# include "Platforms/PC/PCGraphics.h"
-#endif
+#include "Framework/Video.h"
 
-#ifdef USE_QT
-# include "Platforms/Qt/QtGraphics.h"
-#endif
+
 
 WINTERMOON_BEGIN_NAMESPACE
 
@@ -44,7 +40,7 @@ VideoManager::VideoManager(const VideoManager& other)
 , m_bpp(other.m_bpp)
 , m_title(other.m_title)
 , m_fullscreen(other.m_fullscreen)
-, m_graphics(other.m_graphics)
+, m_video(other.m_video)
 {
 }
 
@@ -82,13 +78,13 @@ VideoManager& VideoManager::init()
     {
         #ifdef USE_SDL
         case SDL:
-            m_graphics.reset(new PCGraphics());
+            m_video = new Video();
             break;
         #endif
 
         #ifdef USE_QT
         case Qt:
-            m_graphics.reset(new QtGraphics());
+            m_video = new QtVideo();
             break;
         #endif
 
@@ -99,7 +95,7 @@ VideoManager& VideoManager::init()
             break;
     }
 
-    bool suscess = m_graphics->init(m_size, m_bpp, m_title, m_fullscreen);
+    bool suscess = m_video->init(m_size, m_bpp, m_title, m_fullscreen);
 
     if (!suscess) {
         LOG("Failed to set video mode at %dx%dx%d", m_size.width(), m_size.height(), m_bpp);
@@ -131,7 +127,7 @@ VideoManager& VideoManager::operator=(const VideoManager& other)
     m_bpp = other.m_bpp;
     m_title = other.m_title;
     m_fullscreen = other.m_fullscreen;
-    m_graphics = other.m_graphics;
+    m_video = other.m_video;
 
     return *this;
 }

@@ -17,27 +17,30 @@
  *
  */
 
-#include "Platforms/PC/PCGraphics.h"
-#include "Platforms/PC/PCGraphicsPrivate.h"
+#ifndef _Video_h
+#define _Video_h
+
+#include "Internal.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCGraphics::PCGraphics()
+class VideoPrivate;
+class Video
 {
-    d = new PCGraphicsPrivate();
-}
+    public:
+        Video();
 
-PCGraphics::~PCGraphics()
-{
-    delete d;
-}
+        virtual ~Video();
 
-bool PCGraphics::init(const Size& size, short bpp, const String& title, bool fullscreen)
-{
-    return d->init(size, bpp, title, fullscreen);
-}
+        virtual bool init(const Size& size, short bpp, const String& title, bool fullscreen);
+
+    private:
+        VideoPrivate *d;
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 

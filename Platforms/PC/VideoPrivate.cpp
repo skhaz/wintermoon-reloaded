@@ -1,4 +1,3 @@
-
 /*
  *                        __
  *             __        /\ \__
@@ -17,13 +16,13 @@
  *
  */
 
-#include "Platforms/PC/PCGraphicsPrivate.h"
+#include "Platforms/PC/VideoPrivate.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCGraphicsPrivate::PCGraphicsPrivate()
+VideoPrivate::VideoPrivate()
 {
     if (SDL_WasInit(SDL_INIT_VIDEO) == 0)
     {
@@ -31,7 +30,7 @@ PCGraphicsPrivate::PCGraphicsPrivate()
     }
 }
 
-PCGraphicsPrivate::~PCGraphicsPrivate()
+VideoPrivate::~VideoPrivate()
 {
     if (SDL_WasInit(SDL_INIT_VIDEO) == 0)
     {
@@ -39,7 +38,7 @@ PCGraphicsPrivate::~PCGraphicsPrivate()
     }
 }
 
-bool PCGraphicsPrivate::init(const Size& size, short bpp, const String& title, bool fullscreen)
+bool VideoPrivate::init(const Size& size, short bpp, const String& title, bool fullscreen)
 {
     SDL_WM_SetCaption(title.c_str(), NULL);
     Uint32 flags = SDL_HWSURFACE | SDL_OPENGL;
@@ -54,8 +53,6 @@ bool PCGraphicsPrivate::init(const Size& size, short bpp, const String& title, b
     SDL_GL_SetAttribute(SDL_GL_ACCUM_GREEN_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_BLUE_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_ACCUM_ALPHA_SIZE, 0);
-
-    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
     glViewport(0, 0, size.width(), size.height());

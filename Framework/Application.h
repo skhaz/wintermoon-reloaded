@@ -26,14 +26,22 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
+class ApplicationPrivate;
 class Application
 {
     public:
-        Application(int argc, char **argv);
+        explicit Application(int argc = 0, char **argv = NULL);
 
         virtual ~Application();
 
+        StringList arguments() const;
+
         virtual int exec();
+
+    private:
+        ApplicationPrivate *d;
+
+        StringList m_arguments;
 };
 
 WINTERMOON_END_NAMESPACE

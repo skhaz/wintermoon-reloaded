@@ -17,27 +17,26 @@
  *
  */
 
-#include "Platforms/PC/PCApplication.h"
-#include "Platforms/PC/PCApplicationPrivate.h"
+#include "Video.h"
+#include "Platforms/PC/VideoPrivate.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCApplication::PCApplication(int argc, char **argv)
-: AbstractApplication(argc, argv)
+Video::Video()
 {
-    d = new PCApplicationPrivate(argc, argv);
+    d = new VideoPrivate();
 }
 
-PCApplication::~PCApplication()
+Video::~Video()
 {
     delete d;
 }
 
-int PCApplication::exec()
+bool Video::init(const Size& size, short bpp, const String& title, bool fullscreen)
 {
-    return d->exec();
+    return d->init(size, bpp, title, fullscreen);
 }
 
 WINTERMOON_END_NAMESPACE

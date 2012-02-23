@@ -17,42 +17,27 @@
  *
  */
 
-#include "Platforms/PC/PCApplicationPrivate.h"
+#ifndef _ApplicationPrivate_h
+#define _ApplicationPrivate_h
+
+#include "Framework/Internal.h"
+#include "Platforms/PC/Private.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-PCApplicationPrivate::PCApplicationPrivate(int argc, char **argv)
+class ApplicationPrivate
 {
-    UNUSED(argc);
-    UNUSED(argv);
+    public:
+        ApplicationPrivate(int argc, char **argv);
 
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        LOG("SDL_Init %s", SDL_GetError());
-        exit(-1);
-    }
+        virtual ~ApplicationPrivate();
 
-    else {
-        SDL_InitSubSystem(SDL_INIT_JOYSTICK);
-    }
-
-    if (FAILED(PHYSFS_init(argv[0]))) {
-        LOG("PHYSFS_init %s", PHYSFS_getLastError());
-        exit(-1);
-    }
-}
-
-PCApplicationPrivate::~PCApplicationPrivate()
-{
-    PHYSFS_deinit();
-    SDL_Quit();
-}
-
-int PCApplicationPrivate::exec()
-{
-    return 0;
-}
+        virtual int exec();
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 

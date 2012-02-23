@@ -17,27 +17,23 @@
  *
  */
 
-#ifndef _PCApplication_h
-#define _PCApplication_h
+#ifndef _VideoPrivate_h
+#define _VideoPrivate_h
 
-#include "Interfaces/AbstractApplication.h"
+#include "Platforms/PC/Private.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class PCApplicationPrivate;
-class PCApplication : public AbstractApplication
+class VideoPrivate
 {
     public:
-        PCApplication(int argc, char **argv);
+        VideoPrivate();
 
-        virtual ~PCApplication();
+        ~VideoPrivate();
 
-        virtual int exec();
-
-    private:
-        PCApplicationPrivate *d;
+        virtual bool init(const Size& size, short bpp, const String& title, bool fullscreen);
 };
 
 WINTERMOON_END_NAMESPACE

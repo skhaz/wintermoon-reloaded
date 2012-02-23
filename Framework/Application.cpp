@@ -18,6 +18,7 @@
  */
 
 #include "Application.h"
+#include "Platforms/PC/ApplicationPrivate.h"
 
 
 
@@ -25,17 +26,26 @@ WINTERMOON_BEGIN_NAMESPACE
 
 Application::Application(int argc, char **argv)
 {
-    UNUSED(argc);
-    UNUSED(argv);
+    for (int i = 0; i < argc; ++i) {
+        m_arguments += argv[i];
+    }
+
+    d = new ApplicationPrivate(argc, argv);
 }
 
 Application::~Application()
 {
+    delete d;
+}
+
+StringList Application::arguments() const
+{
+    return m_arguments;
 }
 
 int Application::exec()
 {
-    return 0;
+    return d->exec();
 }
 
 WINTERMOON_END_NAMESPACE

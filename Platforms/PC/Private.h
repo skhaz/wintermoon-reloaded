@@ -17,27 +17,19 @@
  *
  */
 
-#ifndef _PCGraphicsPrivate_h
-#define _PCGraphicsPrivate_h
+#ifndef _PCPrivate_h
+#define _PCPrivate_h
 
-#include "Interfaces/AbstractGraphics.h"
-#include "Platforms/PC/PCPrivate.h"
+#include "Framework/Internal.h"
 
-
-
-WINTERMOON_BEGIN_NAMESPACE
-
-class PCGraphicsPrivate
-{
-    public:
-        PCGraphicsPrivate();
-
-        ~PCGraphicsPrivate();
-
-        virtual bool init(const Size& size, short bpp, const String& title, bool fullscreen);
-};
-
-WINTERMOON_END_NAMESPACE
+#ifndef USE_SDL
+# error You must use SDL for PC
+#else
+# include <SDL/SDL.h>
+# include <SDL/SDL_opengl.h>
+# include <SDL/SDL_image.h>
+# include "physfs.h"
+#endif
 
 #endif
 

@@ -21,12 +21,12 @@
 #define _VideoManager_h
 
 #include "Framework/Internal.h"
-#include "Interfaces/AbstractGraphics.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
+class Video;
 class VideoManager
 {
     public:
@@ -70,7 +70,7 @@ class VideoManager
 
         bool m_fullscreen;
 
-        AbstractGraphicsPtr m_graphics;
+        Video *m_video;
 };
 
 WINTERMOON_END_NAMESPACE
