@@ -19,13 +19,6 @@
 
 #include "Platforms/PC/InputPrivate.h"
 
-#include "Framework/InputManager.h"
-#include "Framework/Event.h"
-#include "Framework/EventListener.h"
-#include "Framework/JoyStickEvent.h"
-#include "Framework/KeyEvent.h"
-#include "Framework/MouseEvent.h"
-
 
 
 WINTERMOON_BEGIN_NAMESPACE

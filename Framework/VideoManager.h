@@ -20,57 +20,24 @@
 #ifndef _VideoManager_h
 #define _VideoManager_h
 
-#include "Framework/Internal.h"
-#include "Framework/Video.h"
+#include "Internal.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
+class VideoPrivate;
 class VideoManager
 {
     public:
-        VideoManager(Backend backend = None);
+        VideoManager();
 
         ~VideoManager();
 
-        VideoManager(const VideoManager& other);
-
-        VideoManager& withSize(const Size& size);
-
-        VideoManager& withBitsPerPixel(short bpp);
-
-        VideoManager& withTitle(const String& title);
-
-        VideoManager& withFullScreen(bool fullscreen);
-
-        VideoManager& init();
-
-        const Size& size() const;
-
-        short bpp() const;
-
-        const String& title() const;
-
-        VideoManager& operator=(const VideoManager& other);
-
-    protected:
-        void beginDraw();
-
-        void endDraw();
+        bool init(const Size& size, short bpp, const String& title, bool fullscreen);
 
     private:
-        Backend m_backend;
-
-        Size m_size;
-
-        short m_bpp;
-
-        String m_title;
-
-        bool m_fullscreen;
-
-        VideoPtr m_video;
+        VideoPrivate *d;
 };
 
 WINTERMOON_END_NAMESPACE

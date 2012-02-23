@@ -32,7 +32,7 @@ Kernel* Kernel::instance()
     return &root;
 }
 
-VideoManager* videoManager() const
+VideoManager* Kernel::videoManager() const
 {
     return m_video;
 }

@@ -42,7 +42,7 @@ class Kernel
 
         ~Kernel();
 
-        VideoManager m_video;
+        VideoManager *m_video;
         InputManager *m_input;
 };
 
