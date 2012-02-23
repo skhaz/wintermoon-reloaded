@@ -23,10 +23,6 @@
 #include "Namespace.h"
 #include "Types.h"
 
-#include <boost/shared_ptr.hpp>
-#include <boost/bind.hpp>
-#include <algorithm>
-
 #include <cstdio>
 
 
