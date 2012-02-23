@@ -1,3 +1,4 @@
+
 /*
  *                        __
  *             __        /\ \__
@@ -16,12 +17,33 @@
  *
  */
 
-#include "Application.h"
-#include "Types.h"
-#include "VideoManager.h"
-#include "InputManager.h"
-#include "Kernel.h"
-#include "EventListener.h"
-#include "KeyEvent.h"
-#include "Thread.h"
+#include "Framework/Thread.h"
+#include "Platforms/PC/ThreadPrivate.h"
+
+
+
+WINTERMOON_BEGIN_NAMESPACE
+
+Thread::Thread()
+{
+    d = new ThreadPrivate();
+    d->setTarget(this);
+}
+
+Thread::~Thread()
+{
+    delete d;
+}
+
+void Thread::start()
+{
+    d->start();
+}
+
+void Thread::wait()
+{
+    d->wait();
+}
+
+WINTERMOON_END_NAMESPACE
 

@@ -1,3 +1,4 @@
+
 /*
  *                        __
  *             __        /\ \__
@@ -16,12 +17,41 @@
  *
  */
 
-#include "Application.h"
-#include "Types.h"
-#include "VideoManager.h"
-#include "InputManager.h"
-#include "Kernel.h"
-#include "EventListener.h"
-#include "KeyEvent.h"
-#include "Thread.h"
+#ifndef _ThreadPrivate_h
+#define _ThreadPrivate_h
+
+#include "Platforms/PC/Private.h"
+
+
+
+WINTERMOON_BEGIN_NAMESPACE
+
+class Thread;
+class ThreadPrivate
+{
+    public:
+        ThreadPrivate();
+
+        ~ThreadPrivate();
+
+        void start();
+
+        void wait();
+
+    protected:
+        friend class Thread;
+
+        void setTarget(Thread *target);
+
+		static int entryPoint(void *arg);
+
+    private:
+        SDL_Thread *m_thread;
+
+        Thread *m_target;
+};
+
+WINTERMOON_END_NAMESPACE
+
+#endif
 
