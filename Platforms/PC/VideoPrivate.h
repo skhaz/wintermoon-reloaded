@@ -34,6 +34,10 @@ class VideoPrivate
         ~VideoPrivate();
 
         virtual bool init(const Size& size, short bpp, const String& title, bool fullscreen);
+
+        void beginDraw();
+
+        void endDraw();
 };
 
 WINTERMOON_END_NAMESPACE

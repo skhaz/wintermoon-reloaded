@@ -72,5 +72,15 @@ bool VideoPrivate::init(const Size& size, short bpp, const String& title, bool f
     return true;
 }
 
+void VideoPrivate::beginDraw()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void VideoPrivate::endDraw()
+{
+    SDL_GL_SwapBuffers();
+}
+
 WINTERMOON_END_NAMESPACE
 
