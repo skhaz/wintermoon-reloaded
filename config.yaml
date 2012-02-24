@@ -1,6 +1,0 @@
-application: game
-version: 1
-libraries:
-  - name: SDL
-    version: 1.2.x
-

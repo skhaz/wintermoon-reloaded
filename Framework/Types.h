@@ -30,15 +30,6 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
-typedef enum Backend
-{
-    None = 0,
-    SDL,
-    Qt,
-    iOS,
-    Android
-};
-
 #ifdef MATH_PRECISE
     typedef double Real;
 #else
