@@ -30,7 +30,7 @@ class MouseEvent;
 class MouseListener : public EventListener
 {
     public:
-		MouseListener();
+        MouseListener();
 
         virtual ~MouseListener();
 
