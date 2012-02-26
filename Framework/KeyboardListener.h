@@ -30,13 +30,13 @@ class KeyEvent;
 class KeyboardListener : public EventListener
 {
     public:
-		KeyboardListener();
+        KeyboardListener();
 
         virtual ~KeyboardListener();
 
-		virtual void keyPressEvent(KeyEvent* event);
+        virtual void keyPressEvent(KeyEvent* event);
 
-		virtual void keyReleaseEvent(KeyEvent* event);
+        virtual void keyReleaseEvent(KeyEvent* event);
 
 };
 
