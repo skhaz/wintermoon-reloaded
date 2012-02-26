@@ -17,27 +17,23 @@
  *
  */
 
-#ifndef _SystemEventListener_h
-#define _SystemEventListener_h
-
-#include "Framework/EventListener.h"
+#include "Framework/SystemEventListener.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class SystemEvent;
-class SystemEventListener : public EventListener
+SystemEventListener::SystemEventListener()
 {
-    public:
-        SystemEventListener();
+}
 
-        virtual ~SystemEventListener();
+SystemEventListener::~SystemEventListener()
+{
+}
 
-        virtual void quitEvent();
-};
+void SystemEventListener::quitEvent()
+{
+}
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 
