@@ -23,6 +23,12 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
+boost::unordered_map<
+        String,
+        ResourcePtr,
+        boost::hash<String>
+    > m_cache;
+
 ResourceManager::ResourceManager()
 {
 }
@@ -32,6 +38,4 @@ ResourceManager::~ResourceManager()
 }
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 

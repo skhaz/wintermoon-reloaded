@@ -23,6 +23,11 @@
 #include "Namespace.h"
 #include "Types.h"
 
+#include <boost/bind.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/functional/hash.hpp>
+#include <boost/tr1/unordered_map.hpp>
+
 #include <cstdio>
 
 
@@ -32,6 +37,8 @@
 #else
 # define DLL_EXPORT
 #endif
+
+#define forever for (;;)
 
 #ifdef FAILED
 # undef FAILED

@@ -33,6 +33,8 @@ class Resource
         virtual ~Resource();
 };
 
+typedef boost::shared_ptr<Resource> ResourcePtr;
+
 WINTERMOON_END_NAMESPACE
 
 #endif

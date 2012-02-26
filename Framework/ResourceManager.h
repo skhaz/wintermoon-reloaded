@@ -22,6 +22,8 @@
 
 #include "Framework/Internal.h"
 
+#include "Resource.h"
+
 
 
 WINTERMOON_BEGIN_NAMESPACE
@@ -32,6 +34,13 @@ class ResourceManager
         ResourceManager();
 
         virtual ~ResourceManager();
+
+    private:
+        static boost::unordered_map<
+                String,
+                ResourcePtr,
+                boost::hash<String>
+            > m_cache;
 };
 
 WINTERMOON_END_NAMESPACE

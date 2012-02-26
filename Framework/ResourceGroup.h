@@ -19,13 +19,13 @@
 #ifndef _ResourceGroup_h
 #define _ResourceGroup_h
 
-#include "Framework/Internal.h"
+#include "Framework/Resource.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class ResourceGroup
+class ResourceGroup : public Resource
 {
     public:
         ResourceGroup();
