@@ -17,31 +17,31 @@
  *
  */
 
-#ifndef _MouseListener_h
-#define _MouseListener_h
-
-#include "Framework/EventListener.h"
+#include "Framework/MouseListener.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class MouseEvent;
-class MouseListener : public EventListener
+MouseListener::MouseListener()
 {
-    public:
-        MouseListener();
+}
 
-        virtual ~MouseListener();
+MouseListener::~MouseListener()
+{
+}
 
-        virtual void mouseMoveEvent(MouseEvent *);
+void MouseListener::mouseMoveEvent(MouseEvent *)
+{
+}
 
-        virtual void mouseReleaseEvent(MouseEvent *);
+void MouseListener::mouseReleaseEvent(MouseEvent *)
+{
+}
 
-        virtual void mousePressEvent(MouseEvent *);
-};
+void MouseListener::mousePressEvent(MouseEvent *)
+{
+}
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 
