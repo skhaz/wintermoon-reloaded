@@ -21,6 +21,7 @@
 #define _PCPrivate_h
 
 #include "Framework/Internal.h"
+#include "Framework/Size.h"
 
 #ifndef USE_SDL
 # error You must use SDL for PC

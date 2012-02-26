@@ -20,7 +20,8 @@
 #ifndef _VideoManager_h
 #define _VideoManager_h
 
-#include "Internal.h"
+#include "Framework/Internal.h"
+#include "Framework/Size.h"
 
 
 
