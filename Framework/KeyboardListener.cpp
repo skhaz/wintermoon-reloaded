@@ -17,29 +17,26 @@
  *
  */
 
-#ifndef _KeyboardListener_h
-#define _KeyboardListener_h
-
-#include "Framework/EventListener.h"
-
+#include "Framework/KeyboardListener.h"
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-class KeyEvent;
-class KeyboardListener : public EventListener
+KeyboardListener::KeyboardListener()
 {
-    public:
-        KeyboardListener();
+}
 
-        virtual ~KeyboardListener();
+KeyboardListener::~KeyboardListener()
+{
+}
 
-        virtual void keyPressEvent(KeyEvent *);
+void KeyboardListener::keyPressEvent(KeyEvent *)
+{
+}
 
-        virtual void keyReleaseEvent(KeyEvent *);
-};
+void KeyboardListener::keyReleaseEvent(KeyEvent *)
+{
+}
 
 WINTERMOON_END_NAMESPACE
-
-#endif
 
