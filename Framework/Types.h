@@ -22,7 +22,6 @@
 
 #include "Namespace.h"
 
-#include "Size.h"
 #include "List.h"
 #include "Deque.h"
 #include "Vector.h"
