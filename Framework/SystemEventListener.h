@@ -30,11 +30,11 @@ class SystemEvent;
 class SystemListener : public EventListener
 {
     public:
-		SystemListener();
+        SystemListener();
 
         virtual ~SystemListener();
 
-		virtual void quitEvent();
+        virtual void quitEvent();
 };
 
 WINTERMOON_END_NAMESPACE
