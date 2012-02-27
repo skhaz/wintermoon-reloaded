@@ -20,6 +20,7 @@
 #define _Resource_h
 
 #include "Framework/Internal.h"
+#include "Framework/Url.h"
 
 
 
@@ -30,7 +31,14 @@ class Resource
     public:
         Resource();
 
+        Resource(const Url& url);
+
         virtual ~Resource();
+
+        const Url& url() const;
+
+    private:
+        Url m_url;
 };
 
 typedef boost::shared_ptr<Resource> ResourcePtr;

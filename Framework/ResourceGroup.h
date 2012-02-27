@@ -28,9 +28,22 @@ WINTERMOON_BEGIN_NAMESPACE
 class ResourceGroup : public Resource
 {
     public:
-        ResourceGroup();
+        explicit ResourceGroup(const String& name = String());
 
         virtual ~ResourceGroup();
+
+        void add(ResourcePtr resource);
+
+        void remove(ResourcePtr resource);
+
+        String name() const;
+
+        List<ResourcePtr> resources() const;
+
+    private:
+        String m_name;
+
+        List<ResourcePtr> m_resources;
 };
 
 WINTERMOON_END_NAMESPACE

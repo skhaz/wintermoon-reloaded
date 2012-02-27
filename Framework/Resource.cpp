@@ -25,8 +25,18 @@ Resource::Resource()
 {
 }
 
+Resource::Resource(const Url& url)
+: m_url(url)
+{
+}
+
 Resource::~Resource()
 {
+}
+
+const Url& Resource::url() const
+{
+    return m_url;
 }
 
 WINTERMOON_END_NAMESPACE

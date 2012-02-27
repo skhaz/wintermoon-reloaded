@@ -37,7 +37,7 @@ class ResourceManager
 
         virtual ~ResourceManager();
 
-        ResourcePtr load(const String& filename);
+        void load(const ResourceGroup& group);
 
     private:
         ResourceCache m_cache;

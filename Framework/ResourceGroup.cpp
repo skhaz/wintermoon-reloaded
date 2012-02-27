@@ -21,12 +21,33 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
-ResourceGroup::ResourceGroup()
+ResourceGroup::ResourceGroup(const String& name)
+: m_name(name)
 {
 }
 
 ResourceGroup::~ResourceGroup()
 {
+}
+
+void ResourceGroup::add(ResourcePtr resource)
+{
+    m_resources += resource;
+}
+
+void ResourceGroup::remove(ResourcePtr resource)
+{
+    m_resources -= resource;
+}
+
+String ResourceGroup::name() const
+{
+    return m_name;
+}
+
+List<ResourcePtr> ResourceGroup::resources() const
+{
+    return m_resources;
 }
 
 WINTERMOON_END_NAMESPACE

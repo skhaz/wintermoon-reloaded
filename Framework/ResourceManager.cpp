@@ -31,18 +31,30 @@ ResourceManager::~ResourceManager()
 {
 }
 
-ResourcePtr ResourceManager::load(const String& filename)
+void ResourceManager::load(const ResourceGroup& group)
 {
-    if (!m_cache.find(filename))
+    List<ResourcePtr> resources = group.resources();
+    List<ResourcePtr>::iterator it = resources.begin();
+    List<ResourcePtr>::const_iterator end = resources.end();
+
+    for (; it != end; ++it)
     {
-        // TODO load
-
         ResourcePtr resource;
-        m_cache.add(filename, resource);
-        return resource;
-    }
+        Url url = resource->url();
+        String filename = url.filename();
 
-    return m_cache.get(filename);
+        if (!m_cache.find(filename))
+        {
+            // TODO load
+            m_cache.add(filename, resource);
+        }
+
+        else {
+            resource = m_cache.get(filename);
+        }
+
+    }
+        // TODO input->injectEvent...
 }
 
 WINTERMOON_END_NAMESPACE
