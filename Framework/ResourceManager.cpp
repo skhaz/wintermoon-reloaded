@@ -31,5 +31,19 @@ ResourceManager::~ResourceManager()
 {
 }
 
+ResourcePtr ResourceManager::load(const String& filename)
+{
+    if (!m_cache.find(filename))
+    {
+        // TODO load
+
+        ResourcePtr resource;
+        m_cache.add(filename, resource);
+        return resource;
+    }
+
+    return m_cache.get(filename);
+}
+
 WINTERMOON_END_NAMESPACE
 

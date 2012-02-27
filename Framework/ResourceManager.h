@@ -23,6 +23,8 @@
 #include "Framework/Internal.h"
 
 #include "Resource.h"
+#include "ResourceGroup.h"
+#include "ResourceCache.h"
 
 
 
@@ -35,8 +37,10 @@ class ResourceManager
 
         virtual ~ResourceManager();
 
-    private:
+        ResourcePtr load(const String& filename);
 
+    private:
+        ResourceCache m_cache;
 };
 
 WINTERMOON_END_NAMESPACE
