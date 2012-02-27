@@ -23,7 +23,7 @@
 
 WINTERMOON_BEGIN_NAMESPACE
 
-Map<String, int> Key::m_keymap;
+std::map<String, int> Key::m_keymap;
 
 Key::Key()
 : m_key(-1)
@@ -45,7 +45,7 @@ Key::Key(const String& key)
     String tmp(key);
     std::transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
 
-    Map<String, int>::const_iterator it = m_keymap.find(tmp);
+    std::map<String, int>::const_iterator it = m_keymap.find(tmp);
     if (it != m_keymap.end()) {
         m_key = it->second;
     }

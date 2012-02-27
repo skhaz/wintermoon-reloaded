@@ -54,7 +54,7 @@ class Key
         bool operator!=(int key);
 
     private:
-        static Map<String, int> m_keymap;
+        static std::map<String, int> m_keymap;
 
         int m_key;
 };
