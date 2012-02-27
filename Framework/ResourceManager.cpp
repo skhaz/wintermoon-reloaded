@@ -8,7 +8,7 @@
  *  \ \___x___/'\ \_\ \_\ \_\ \__\ \____\ \_\\ \_\ \_\ \_\ \____/ \____/ \_\ \_\
  *   \/__//__/   \/_/\/_/\/_/\/__/\/____/\/_/ \/_/\/_/\/_/\/___/ \/___/ \/_/\/_/
  *
- * Copyright (c) 2006 - 2011 Wintermoon Project
+ * Copyright (c) 2006 - 2012 Wintermoon Project
  *
  * http://wintermoon.sourceforge.net/
  *
@@ -45,7 +45,7 @@ void ResourceManager::load(const ResourceGroup& group)
 
         if (!m_cache.find(filename))
         {
-            // TODO load
+            // TODO load in a thread
             m_cache.add(filename, resource);
         }
 
@@ -54,7 +54,8 @@ void ResourceManager::load(const ResourceGroup& group)
         }
 
     }
-        // TODO input->injectEvent...
+
+    // TODO input->injectEvent...
 }
 
 WINTERMOON_END_NAMESPACE
