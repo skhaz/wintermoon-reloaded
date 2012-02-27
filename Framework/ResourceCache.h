@@ -17,19 +17,43 @@
  *
  */
 
-#include "Framework/ResourceManager.h"
+#ifndef _ResourceCache_h
+#define _ResourceCache_h
+
+#include "Framework/Internal.h"
+
+#include "Resource.h"
 
 
 
 WINTERMOON_BEGIN_NAMESPACE
 
-ResourceManager::ResourceManager()
+class ResourceCache
 {
-}
+    public:
+        ResourceCache();
 
-ResourceManager::~ResourceManager()
-{
-}
+        virtual ~ResourceCache();
+
+        ResourcePtr get(const String& key);
+
+        void add(const String& key, ResourcePtr resource);
+
+        bool find(const String& key) const;
+
+        size_t count();
+
+        void flush();
+
+    private:
+        boost::unordered_map<
+                String,
+                ResourcePtr,
+                boost::hash<String>
+            > m_cache;
+};
 
 WINTERMOON_END_NAMESPACE
+
+#endif
 
