@@ -43,7 +43,7 @@ void ResourceManager::load(const ResourceGroup& group)
         Url url = resource->url();
         String filename = url.filename();
 
-        if (!m_cache.find(filename))
+        if (!m_cache.exists(filename))
         {
             // TODO load in a thread
             m_cache.add(filename, resource);

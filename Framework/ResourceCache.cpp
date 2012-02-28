@@ -52,7 +52,7 @@ void ResourceCache::add(const String& key, ResourcePtr resource)
     m_cache[key] = resource;
 }
 
-bool ResourceCache::find(const String& key) const
+bool ResourceCache::exists(const String& key) const
 {
     return m_cache.find(key) != m_cache.end();
 }

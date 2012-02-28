@@ -39,7 +39,7 @@ class ResourceCache
 
         void add(const String& key, ResourcePtr resource);
 
-        bool find(const String& key) const;
+        bool exists(const String& key) const;
 
         size_t count();
 

@@ -29,6 +29,7 @@
 #include <boost/tr1/unordered_map.hpp>
 
 #include <cstdio>
+#include <cmath>
 
 
 
